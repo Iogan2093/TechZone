@@ -1,0 +1,57 @@
+@page "/products"
+@rendermode InteractiveServer
+@inject IProductService ProductService
+@inject ICategoryService CategoryService
+@inject ICartService CartService
+@inject ICurrentUserService CurrentUser
+@inject NavigationManager Nav
+
+<PageTitle>Каталог — TechZone</PageTitle>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-tz"><i class="bi bi-pc-display"></i> Каталог гаджетов</h1>
+    <select class="form-select w-auto" @bind="ActiveCatId" @bind:after="LoadGadgets">
+        <option value="0">Все категории</option>
+        @if (techCats != null) { foreach (var c in techCats) { <option value="@c.Id">@c.Name</option> } }
+    </select>
+</div>
+
+@if (gadgets == null) { <p><em>Загрузка...</em></p> }
+else if (!gadgets.Any()) { <div class="alert alert-info">Товары не найдены.</div> }
+else
+{
+    <div class="d-flex flex-column gap-3">
+        @foreach (var p in gadgets)
+        {
+            <div class="tz-list-card row g-0">
+                <div class="col-md-3 tz-img-wrap">
+                    @if (!string.IsNullOrEmpty(p.ImageUrl))
+                    { <img src="@p.ImageUrl" style="width: 100%; height: 200px; object-fit: cover;" /> }
+                </div>
+                <div class="col-md-7 p-4">
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <span class="badge tz-badge">@p.Category?.Name</span>
+                        <small class="text-muted"><i class="bi bi-box-seam"></i> в наличии: @p.Stock</small>
+                    </div>
+                    <h4 class="text-tz mb-2">@p.Name</h4>
+                    <p class="text-muted mb-0">@p.Description</p>
+                </div>
+                <div class="col-md-2 d-flex flex-column justify-content-center align-items-center p-3 tz-price-col">
+                    <strong class="fs-3 mb-2">@p.Price.ToString("N0") ₽</strong>
+                    <a class="btn btn-sm btn-outline-light w-100 mb-1" href="@($"/products/{p.Id}")">Подробнее</a>
+                    <button class="btn btn-sm btn-tz w-100" @onclick="() => BuyGadget(p.Id)" disabled="@(p.Stock == 0)"><i class="bi bi-cart-plus"></i> В корзину</button>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private IEnumerable<Models.Product>? gadgets;
+    private IEnumerable<Models.Category>? techCats;
+    private int ActiveCatId { get; set; } = 0;
+
+    protected override async Task OnInitializedAsync() { techCats = await CategoryService.GetAllAsync(); await LoadGadgets(); }
+    private async Task LoadGadgets() { gadgets = ActiveCatId == 0 ? await ProductService.GetAllAsync() : await ProductService.GetByCategoryAsync(ActiveCatId); }
+    private async Task BuyGadget(int id) { var c = await CurrentUser.GetOrCreateAnonBuyerAsync(); await CartService.AddToCartAsync(c.Id, id); Nav.NavigateTo("/cart"); }
+}

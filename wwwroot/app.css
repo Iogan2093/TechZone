@@ -1,0 +1,30 @@
+html, body { font-family: "Inter", "Segoe UI", sans-serif !important; background-color: #0277bd !important; color: #01579b !important; margin: 0; }
+.page { background-color: #b3e5fc !important; min-height: 100vh; }
+main { background-color: #b3e5fc !important; }
+.tz-nav, .navbar { background: linear-gradient(90deg, #01579b, #0288d1) !important; border-bottom: 4px solid #00e5ff !important; }
+.tz-nav .nav-link, .navbar .nav-link { color: #e1f5fe !important; font-weight: 600; }
+.tz-nav .nav-link:hover, .tz-nav .nav-link.active { color: #00e5ff !important; }
+.tz-hero { background: linear-gradient(135deg, #01579b 0%, #0288d1 50%, #29b6f6 100%) !important; border: 4px solid #00e5ff !important; box-shadow: 0 0 40px rgba(0,229,255,0.6) !important; color: #fff !important; }
+.tz-hero h1 { color: #00e5ff !important; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+.tz-hero p, .tz-hero .text-light { color: #fff !important; }
+.tz-footer, footer { background-color: #002171 !important; border-top: 4px solid #00e5ff !important; color: #b3e5fc !important; }
+.text-tz { color: #01579b !important; font-weight: 700; }
+.btn-tz { background-color: #00e5ff !important; border-color: #00e5ff !important; color: #01579b !important; font-weight: 700; }
+.btn-tz:hover { background-color: #01579b !important; color: #00e5ff !important; }
+.btn-primary, .btn-success { background-color: #0288d1 !important; border-color: #0288d1 !important; color: #fff !important; font-weight: 600; }
+.btn-primary:hover, .btn-success:hover { background-color: #01579b !important; }
+.btn-outline-light { border: 2px solid #fff !important; color: #fff !important; }
+.btn-outline-light:hover { background-color: #fff !important; color: #01579b !important; }
+.text-primary { color: #0288d1 !important; }
+.bg-primary { background-color: #01579b !important; }
+.tz-stats, .card { background-color: #fff !important; border: 2px solid #0288d1 !important; }
+.tz-card { background-color: #fff !important; border-left: 6px solid #00e5ff !important; box-shadow: 0 0.4rem 0.8rem rgba(2,136,209,0.3) !important; transition: all 0.2s ease; }
+.tz-card:hover { transform: translateY(-3px); box-shadow: 0 0.8rem 1.5rem rgba(2,136,209,0.5) !important; }
+.tz-list-card { background-color: #fff !important; border: 3px solid #0288d1 !important; transition: all 0.2s ease; }
+.tz-list-card:hover { border-color: #00e5ff !important; box-shadow: 0 0.6rem 1.2rem rgba(0,229,255,0.5) !important; }
+.tz-img-wrap { background-color: #e1f5fe !important; }
+.tz-badge { background-color: #00e5ff !important; color: #01579b !important; font-weight: 700; }
+.tz-price-col { background: linear-gradient(180deg, #01579b, #0288d1) !important; color: #fff !important; }
+.navbar-brand { color: #00e5ff !important; font-weight: 800; }
+#blazor-error-ui { background: #ffc107; bottom: 0; display: none; left: 0; padding: 0.6rem 1.25rem; position: fixed; width: 100%; z-index: 1000; }
+#blazor-error-ui .dismiss { cursor: pointer; position: absolute; right: 0.75rem; top: 0.5rem; }
