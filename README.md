@@ -50,19 +50,24 @@
 
 ---
 
-## Структура проекта
+## 📁 Структура проекта
+
+```
 TechZone/
-├── TechZone/                          # Основной веб-проект
-│   ├── Components/                    # Blazor компоненты
-│   │   ├── Pages/                     # Страницы приложения
-│   │   │   ├── Products.razor         # Каталог товаров
+├── TechZone/                          # 📦 Основной веб-проект
+│   ├── Components/                    # 🧩 Blazor компоненты
+│   │   ├── Pages/                     # 📄 Страницы приложения
+│   │   │   ├── Products.razo r         # Каталог товаров
 │   │   │   ├── ProductDetails.razor   # Карточка товара
 │   │   │   ├── Cart.razor             # Корзина покупок
 │   │   │   ├── Checkout.razor         # Оформление заказа
 │   │   │   └── Orders.razor           # История заказов
-│   │   └── Layout/                    # Макеты и навигация
-│   ├── Data/                          # Доступ к данным
-│   │   ├── Configurations/            # Fluent API конфигурации
+│   │   └── Layout/                    # 🏗️ Макеты и навигация
+│   │       ├── MainLayout.razor
+│   │       └── NavMenu.razor
+│   │
+│   ├── Data/                          # 🗄️ Доступ к данным
+│   │   ├── Configurations/            # ⚙️ Fluent API конфигурации
 │   │   │   ├── CategoryConfiguration.cs
 │   │   │   ├── ProductConfiguration.cs
 │   │   │   ├── CustomerConfiguration.cs
@@ -70,24 +75,27 @@ TechZone/
 │   │   │   ├── OrderItemConfiguration.cs
 │   │   │   ├── CartItemConfiguration.cs
 │   │   │   └── ProductDetailsConfiguration.cs
-│   │   ├── DataInitializer.cs         # Начальные данные (Seed)
-│   │   └── TechZoneDbContext.cs       # Контекст БД
-│   ├── Models/                        # Модели сущностей
-│   │   ├── Category.cs                # Категория товара
-│   │   ├── Product.cs                 # Товар
-│   │   ├── ProductDetails.cs          # Характеристики товара (1:1)
-│   │   ├── Customer.cs                # Покупатель
-│   │   ├── Order.cs                   # Заказ
-│   │   ├── OrderItem.cs               # Позиция заказа
-│   │   └── CartItem.cs                # Корзина
-│   ├── Repositories/                  # Репозитории
-│   │   ├── IRepository.cs             # Интерфейс универсального репозитория
-│   │   ├── Repository.cs              # Реализация универсального репозитория
-│   │   ├── IProductRepository.cs      # Интерфейс репозитория товаров
-│   │   ├── ProductRepository.cs       # Репозиторий товаров (+ Include)
-│   │   ├── IOrderRepository.cs        # Интерфейс репозитория заказов
-│   │   └── OrderRepository.cs         # Репозиторий заказов (+ Include)
-│   ├── Services/                      # Бизнес-логика
+│   │   ├── DataInitializer.cs         # 🌱 Начальные данные (Seed)
+│   │   └── TechZoneDbContext.cs       # 🔗 Контекст БД
+│   │
+│   ├── Models/                        # 📋 Модели сущностей
+│   │   ├── Category.cs                # 🏷️ Категория товара
+│   │   ├── Product.cs                 # 📱 Товар
+│   │   ├── ProductDetails.cs          # 📊 Характеристики товара (1:1)
+│   │   ├── Customer.cs                # 👤 Покупатель
+│   │   ├── Order.cs                   # 📦 Заказ
+│   │   ├── OrderItem.cs               # 📃 Позиция заказа
+│   │   └── CartItem.cs                # 🛒 Корзина
+│   │
+│   ├── Repositories/                  # 📚 Репозитории
+│   │   ├── IRepository.cs             # 🔌 Интерфейс универсального репозитория
+│   │   ├── Repository.cs              # ⚙️ Реализация универсального репозитория
+│   │   ├── IProductRepository.cs      # 🔌 Интерфейс репозитория товаров
+│   │   ├── ProductRepository.cs       # 📱 Репозиторий товаров (+ Include)
+│   │   ├── IOrderRepository.cs        # 🔌 Интерфейс репозитория заказов
+│   │   └── OrderRepository.cs         # 📦 Репозиторий заказов (+ Include)
+│   │
+│   ├── Services/                      # ⚙️ Бизнес-логика
 │   │   ├── IProductService.cs
 │   │   ├── ProductService.cs          # CRUD товаров
 │   │   ├── ICategoryService.cs
@@ -97,19 +105,27 @@ TechZone/
 │   │   ├── IOrderService.cs
 │   │   ├── OrderService.cs            # Создание заказов, списание товаров
 │   │   ├── ICurrentUserService.cs
-│   │   └── CurrentUserService.cs      # Демо-пользователь (guest)
-│   ├── Validators/                    # FluentValidation валидаторы
-│   │   ├── CustomerValidator.cs
-│   │   ├── CheckoutValidator.cs
-│   │   └── CheckoutModel.cs
-│   ├── appsettings.json               # Конфигурация (строки подключения)
-│   ├── appsettings.Development.json   # Конфигурация для разработки
-│   ├── Program.cs                     # Точка входа, DI, миграции
-│   └── Dockerfile                     # Docker-образ приложения
-├── docker-compose.yml                 # Оркестрация контейнеров
-├── README.md                          # Документация
-└── .gitignore                         # Исключения для Git
-
+│   │   └── CurrentUserService.cs      # 👤 Демо-пользователь (guest)
+│   │
+│   ├── Validators/                    # ✅ FluentValidation валидаторы
+│   │   ├── CustomerValidator.cs       # Валидация покупателя
+│   │   ├── CheckoutValidator.cs       # Валидация формы заказа
+│   │   └── CheckoutModel.cs           # Модель данных формы
+│   │
+│   ├── wwwroot/                       # 🌐 Статические файлы
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   │
+│   ├── appsettings.json               # ⚙️ Конфигурация (строки подключения)
+│   ├── appsettings.Development.json   # 🛠️ Конфигурация для разработки
+│   ├── Program.cs                     # 🚀 Точка входа, DI, миграции
+│   └── Dockerfile                     # 🐳 Docker-образ приложения
+│
+├── docker-compose.yml                 # 🐳 Оркестрация контейнеров
+├── README.md                          # 📖 Документация
+└── .gitignore                         # 🚫 Исключения для Git
+```
 ---
 
 ## Быстрый старт
